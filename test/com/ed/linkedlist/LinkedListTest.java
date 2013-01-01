@@ -101,16 +101,33 @@ public class LinkedListTest {
 	}
 
 	@Test
+	public void testRemoveByIndex() {
+		LinkedList list = new LinkedList();
+
+		String valueA = "a";
+		String valueB = "b";
+
+		list.add(valueA);
+		list.add(valueB);
+
+		Assert.assertEquals(valueA, list.remove(0));
+
+		Assert.assertEquals(1, list.size());
+	}
+
+	@Test
 	public void testRemoveByValue() {
 		LinkedList list = new LinkedList();
 
-		String value = "a";
+		String valueA = "a";
+		String valueB = "b";
 
-		list.add(value);
+		list.add(valueA);
+		list.add(valueB);
 
-		Assert.assertTrue(list.remove(value));
+		Assert.assertTrue(list.remove(valueA));
 
-		Assert.assertEquals(0, list.size());
+		Assert.assertEquals(1, list.size());
 	}
 
 	@Test
