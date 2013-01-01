@@ -112,11 +112,11 @@ public class LinkedList {
 
 				Object value = currentNode.getValue();
 
-				currentNode = null;
-
 				if (currentIndex == 0) {
-					setFirst(currentNode);
+					setFirst(nextNode);
 				}
+
+				currentNode = null;
 
 				return value;
 			}
