@@ -16,20 +16,20 @@ public class LinkedList {
 	}
 
 	public boolean contains(Object value) {
+		if (size() == 0) {
+			return false;
+		}
+
 		Node currentNode = getFirst();
 
-		if (currentNode.getValue().equals(value)) {
-			return true;
-		}
-		else {
-			while (currentNode != null) {
-				if (currentNode.getValue().equals(value)) {
-					return true;
-				}
-
-				currentNode = currentNode.getNext();
+		do {
+			if (currentNode.getValue().equals(value)) {
+				return true;
 			}
+
+			currentNode = currentNode.getNext();
 		}
+		while (currentNode != null);
 
 		return false;
 	}
