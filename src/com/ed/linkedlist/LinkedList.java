@@ -2,8 +2,6 @@ package com.ed.linkedlist;
 
 public class LinkedList {
 
-	private Node first;
-
 	public LinkedList() {
 		this.first = null;
 	}
@@ -12,38 +10,96 @@ public class LinkedList {
 		addLinear(value);
 	}
 
-	public void add(Object value, boolean recursive) {
-		if (recursive) {
-			addRecursive(value, getFirst());
-		} else {
-			addLinear(value);
+	public boolean addRecursive(Object value) {
+		return addRecursive(value, getFirst());
+	}
+
+	public boolean contains(Object value) {
+		Node currentNode = getFirst();
+
+		if (currentNode.getValue().equals(value)) {
+			return true;
 		}
+		else {
+			while (currentNode != null) {
+				if (currentNode.getValue().equals(value)) {
+					return true;
+				}
+
+				currentNode = currentNode.getNext();
+			}
+		}
+
+		return false;
+	}
+
+	public boolean containsRecursive(Object value) {
+		return containsRecursive(value, getFirst());
+	}
+
+	public Object get(int index) {
+		Node currentNode = getFirst();
+
+		if (index == 0) {
+			return getFirst().getValue();
+		}
+		else {
+			int count = 0;
+
+			while (currentNode != null) {
+				currentNode = currentNode.getNext();
+
+				count++;
+
+				if ((currentNode != null) && (count == index)) {
+					return currentNode.getValue();
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public Node getFirst() {
 		return first;
 	}
 
-	public void remove(int index) {
-		removeLinear(index);
-	}
-
-	public void remove(int index, boolean recursive) {
-		if (recursive) {
-			removeRecursive(index, getFirst());
-		} else {
-			removeLinear(index);
-		}
-	}
-
-	private void removeLinear(int index) {
+	public int indexOf(Object value) {
 		Node currentNode = getFirst();
 
-		if (index == 0 && currentNode != null) {
+		if (currentNode.getValue().equals(value)) {
+			return 0;
+		}
+		else {
+			int index = 0;
+
+			while (currentNode != null) {
+				currentNode = currentNode.getNext();
+
+				index++;
+
+				if ((currentNode != null) &&
+					currentNode.getValue().equals(value)) {
+
+					return index;
+				}
+			}
+		}
+
+		return -1;
+	}
+
+	public Object remove(int index) {
+		Object removed = null;
+
+		Node currentNode = getFirst();
+
+		if ((index == 0) && (currentNode != null)) {
+			removed = getFirst();
+
 			setFirst(currentNode.getNext());
-		} else if (currentNode == null) {
-			return;
-		} else {
+		}
+		else {
 			int count = 0;
 
 			while (currentNode != null) {
@@ -60,9 +116,39 @@ public class LinkedList {
 				}
 			}
 		}
+
+		return removed;
 	}
 
-	private void removeRecursive(int index, Node currentNode) {
+	public boolean remove(Object value) {
+		int index = 0;
+
+		Node currentNode = getFirst();
+
+		if (currentNode.getValue().equals(value)) {
+			removeRecursive(index);
+
+			return true;
+		}
+		else {
+			while (currentNode != null) {
+				currentNode = currentNode.getNext();
+
+				index++;
+
+				if (currentNode.getValue().equals(value)) {
+					removeRecursive(index);
+
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public Object removeRecursive(int index) {
+		return removeRecursive(index, getFirst(), 0);
 	}
 
 	public void setFirst(Node first) {
@@ -90,7 +176,8 @@ public class LinkedList {
 
 		if (currentNode == null) {
 			setFirst(newNode);
-		} else {
+		}
+		else {
 			while (currentNode.getNext() != null) {
 				currentNode = currentNode.getNext();
 			}
@@ -100,19 +187,72 @@ public class LinkedList {
 		}
 	}
 
-	private void addRecursive(Object value, Node currentNode) {
+	private boolean addRecursive(Object value, Node currentNode) {
+		boolean added = false;
+
 		Node newNode = new Node(value);
 
 		if (currentNode == null) {
 			setFirst(newNode);
-		} else {
+
+			added = true;
+		}
+		else {
 			if (currentNode.getNext() == null) {
 				currentNode.setNext(newNode);
 				newNode.setPrev(currentNode);
-			} else {
-				addRecursive(value, currentNode.getNext());
+
+				added = true;
+			}
+			else {
+				added = addRecursive(value, currentNode.getNext());
 			}
 		}
+
+		return added;
 	}
+
+	private boolean containsRecursive(Object value, Node currentNode) {
+		if (currentNode == null) {
+			return false;
+		}
+
+		if (value.equals(currentNode.getValue())) {
+			return true;
+		}
+		else {
+			return containsRecursive(value, currentNode.getNext());
+		}
+	}
+
+	private Object removeRecursive(
+		int index, Node currentNode, int currentIndex) {
+
+		Object removedValue = null;
+
+		if (index == currentIndex) {
+			if (index == 0) {
+				setFirst(currentNode.getNext());
+			}
+			else {
+				Node prev = currentNode.getPrev();
+				Node next = currentNode.getNext();
+
+				prev.setNext(next);
+				next.setPrev(prev);
+			}
+
+			removedValue = currentNode.getValue();
+		}
+		else {
+			currentNode = currentNode.getNext();
+
+			removeRecursive(index, currentNode, ++currentIndex);
+		}
+
+		return removedValue;
+	}
+
+	private Node first;
 
 }

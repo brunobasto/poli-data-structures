@@ -2,8 +2,9 @@ package com.ed.linkedlist;
 
 public class Node {
 
-	private Node next;
-	private Node prev;
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	} private Node prev;
 
 	private Object value;
 
@@ -15,19 +16,18 @@ public class Node {
 		return next;
 	}
 
-	public void setNext(Node next) {
-		this.next = next;
+	public Node getPrev() {
+		return prev;
 	}
 
 	public Object getValue() {
 		return value;
 	}
 
-	public Node getPrev() {
-		return prev;
+	public void setNext(Node next) {
+		this.next = next;
 	}
 
-	public void setPrev(Node prev) {
-		this.prev = prev;
-	}
+	private Node next;
+
 }
