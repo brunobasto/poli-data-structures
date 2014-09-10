@@ -164,17 +164,17 @@ public class LinkedList {
 	}
 
 	public int size() {
-		int count = 0;
-
 		Node currentNode = getFirst();
+
+		int size = 0;
 
 		while (currentNode != null) {
 			currentNode = currentNode.getNext();
 
-			count++;
+			size++;
 		}
 
-		return count;
+		return size;
 	}
 
 	private void addLinear(Object value) {
