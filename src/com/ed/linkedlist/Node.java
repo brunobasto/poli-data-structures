@@ -2,12 +2,6 @@ package com.ed.linkedlist;
 
 public class Node {
 
-	public void setPrev(Node prev) {
-		this.prev = prev;
-	} private Node prev;
-
-	private Object value;
-
 	public Node(Object value) {
 		this.value = value;
 	}
@@ -28,6 +22,12 @@ public class Node {
 		this.next = next;
 	}
 
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	}
+
 	private Node next;
+	private Node prev;
+	private Object value;
 
 }
