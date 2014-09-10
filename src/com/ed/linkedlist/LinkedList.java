@@ -131,28 +131,26 @@ public class LinkedList {
 	}
 
 	public boolean remove(Object value) {
-		int index = 0;
+		if (!contains(value)) {
+			return false;
+		}
 
 		Node currentNode = getFirst();
 
-		if (currentNode.getValue().equals(value)) {
-			removeRecursive(index);
+		int currentIndex = 0;
 
-			return true;
-		}
-		else {
-			while (currentNode != null) {
-				currentNode = currentNode.getNext();
+		do {
+			if (get(currentIndex).equals(value)) {
+				remove(currentIndex);
 
-				index++;
-
-				if (currentNode.getValue().equals(value)) {
-					removeRecursive(index);
-
-					return true;
-				}
+				return true;
 			}
+
+			currentNode = currentNode.getNext();
+
+			currentIndex++;
 		}
+		while (currentNode != null);
 
 		return false;
 	}
