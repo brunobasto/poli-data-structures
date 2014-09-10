@@ -7,8 +7,8 @@ public class LinkedList {
 		this.first = null;
 	}
 
-	public void add(Object value) {
-		addLinear(value);
+	public boolean add(Object value) {
+		return addLinear(value);
 	}
 
 	public boolean addRecursive(Object value) {
@@ -177,9 +177,8 @@ public class LinkedList {
 		return size;
 	}
 
-	private void addLinear(Object value) {
+	private boolean addLinear(Object value) {
 		Node currentNode = getFirst();
-
 		Node newNode = new Node(value);
 
 		if (currentNode == null) {
@@ -193,31 +192,27 @@ public class LinkedList {
 			currentNode.setNext(newNode);
 			newNode.setPrev(currentNode);
 		}
+
+		return true;
 	}
 
 	private boolean addRecursive(Object value, Node currentNode) {
-		boolean added = false;
-
 		Node newNode = new Node(value);
 
 		if (currentNode == null) {
 			setFirst(newNode);
-
-			added = true;
 		}
 		else {
 			if (currentNode.getNext() == null) {
 				currentNode.setNext(newNode);
 				newNode.setPrev(currentNode);
-
-				added = true;
 			}
 			else {
-				added = addRecursive(value, currentNode.getNext());
+				return addRecursive(value, currentNode.getNext());
 			}
 		}
 
-		return added;
+		return false;
 	}
 
 	private boolean containsRecursive(Object value, Node currentNode) {
