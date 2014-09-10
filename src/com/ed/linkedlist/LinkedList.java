@@ -66,26 +66,24 @@ public class LinkedList {
 	}
 
 	public int indexOf(Object value) {
+		if (!contains(value)) {
+			return -1;
+		}
+
 		Node currentNode = getFirst();
 
-		if (currentNode.getValue().equals(value)) {
-			return 0;
-		}
-		else {
-			int index = 0;
+		int index = 0;
 
-			while (currentNode != null) {
-				currentNode = currentNode.getNext();
-
-				index++;
-
-				if ((currentNode != null) &&
-					currentNode.getValue().equals(value)) {
-
-					return index;
-				}
+		do {
+			if ((currentNode != null) && currentNode.getValue().equals(value)) {
+				return index;
 			}
+
+			currentNode = currentNode.getNext();
+
+			index++;
 		}
+		while (currentNode != null);
 
 		return -1;
 	}
