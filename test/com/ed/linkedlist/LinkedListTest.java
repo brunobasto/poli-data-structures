@@ -1,4 +1,4 @@
-package test;
+package com.ed.linkedlist;
 
 import com.ed.linkedlist.LinkedList;
 
