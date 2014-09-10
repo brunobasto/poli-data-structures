@@ -89,34 +89,45 @@ public class LinkedList {
 	}
 
 	public Object remove(int index) {
-		Object removed = null;
+		if (size() == 0) {
+			throw new NoSuchElementException();
+		}
 
 		Node currentNode = getFirst();
 
-		if ((index == 0) && (currentNode != null)) {
-			removed = getFirst();
+		int currentIndex = 0;
 
-			setFirst(currentNode.getNext());
-		}
-		else {
-			int count = 0;
+		do {
+			if (currentIndex == index) {
+				Node nextNode = currentNode.getNext();
+				Node prevNode = currentNode.getPrev();
 
-			while (currentNode != null) {
-				currentNode = currentNode.getNext();
-
-				count++;
-
-				if (count == index) {
-					Node nextNode = currentNode.getNext();
-					Node prevNode = currentNode.getPrev();
-
+				if (nextNode != null) {
 					nextNode.setPrev(prevNode);
+				}
+
+				if (prevNode != null) {
 					prevNode.setNext(nextNode);
 				}
-			}
-		}
 
-		return removed;
+				Object value = currentNode.getValue();
+
+				currentNode = null;
+
+				if (currentIndex == 0) {
+					setFirst(currentNode);
+				}
+
+				return value;
+			}
+
+			currentNode = currentNode.getNext();
+
+			currentIndex++;
+		}
+		while (currentNode != null);
+
+		throw new NoSuchElementException();
 	}
 
 	public boolean remove(Object value) {
