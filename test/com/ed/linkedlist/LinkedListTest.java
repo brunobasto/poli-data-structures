@@ -1,7 +1,5 @@
 package com.ed.linkedlist;
 
-import com.ed.linkedlist.LinkedList;
-
 import org.junit.Assert;
 import org.junit.Test;
 public class LinkedListTest {

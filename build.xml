@@ -5,6 +5,7 @@
 	<property environment="env" />
 
 	<!-- configuration file -->
+
 	<property file="${project.dir}/build.properties" />
 
 	<path id="project.classpath">
@@ -58,25 +59,30 @@
 		<mkdir dir="${project.dir}/dist" />
 
 		<copy todir="${project.dir}/_temp">
+
 			<!-- include source files in release -->
+
 			<fileset dir="${project.dir}" includes="lib/**" />
 			<fileset dir="${project.dir}" includes="src/**" />
 			<fileset dir="${project.dir}" includes="test/**" />
 
 			<!-- include build files in release -->
+
 			<fileset dir="${project.dir}" includes="build.*" />
 
 			<!-- include README file in release -->
+
 			<fileset dir="${project.dir}" includes="README.md" />
 
 			<!-- include eclipse files in release -->
+
 			<fileset dir="${project.dir}" includes=".project" />
 			<fileset dir="${project.dir}" includes=".classpath" />
 		</copy>
 
 		<zip destfile="${project.dir}/dist/data-structures-${version}.zip" basedir="${project.dir}/_temp" />
 
-		<delete dir="${project.dir}/_temp"/>
+		<delete dir="${project.dir}/_temp" />
 	</target>
 
 	<target name="test" depends="compile-test">
@@ -87,10 +93,10 @@
 			</classpath>
 
 			<batchtest>
-				<formatter type="plain" usefile="false"/>
+				<formatter type="plain" usefile="false" />
 
 				<fileset dir="${project.dir}/test-classes">
-					<include name="**/*Test.class"/>
+					<include name="**/*Test.class" />
 				</fileset>
 			</batchtest>
 		</junit>
