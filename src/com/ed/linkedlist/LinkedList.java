@@ -1,5 +1,6 @@
 package com.ed.linkedlist;
 
+import java.util.NoSuchElementException;
 public class LinkedList {
 
 	public LinkedList() {
@@ -38,26 +39,26 @@ public class LinkedList {
 	}
 
 	public Object get(int index) {
+		if (size() == 0) {
+			throw new NoSuchElementException();
+		}
+
 		Node currentNode = getFirst();
 
-		if (index == 0) {
-			return getFirst().getValue();
-		}
-		else {
-			int count = 0;
+		int count = 0;
 
-			while (currentNode != null) {
-				currentNode = currentNode.getNext();
-
-				count++;
-
-				if ((currentNode != null) && (count == index)) {
-					return currentNode.getValue();
-				}
+		do {
+			if (count == index) {
+				return currentNode.getValue();
 			}
-		}
 
-		return null;
+			currentNode = currentNode.getNext();
+
+			count++;
+		}
+		while (currentNode != null);
+
+		throw new NoSuchElementException();
 	}
 
 	public Node getFirst() {
