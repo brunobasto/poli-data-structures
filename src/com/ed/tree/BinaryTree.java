@@ -12,27 +12,27 @@ public class BinaryTree {
 			BinaryNode aux = root;
 
 			while (aux != null) {
-				if (aux.info == x) {
+				if (aux.getInfo() == x) {
 					break;
 				}
-				else if (x < aux.info) {
-					if (aux.left == null) {
-						aux.left = node;
+				else if (x < aux.getInfo()) {
+					if (aux.getLeft() == null) {
+						aux.setLeft(node);
 
 						break;
 					}
 					else {
-						aux = aux.left;
+						aux = aux.getLeft();
 					}
 				}
 				else {
-					if (aux.right == null) {
-						aux.right = node;
+					if (aux.getRight() == null) {
+						aux.setRight(node);
 
 						break;
 					}
 					else {
-						aux = aux.right;
+						aux = aux.getRight();
 					}
 				}
 			}
@@ -45,11 +45,11 @@ public class BinaryTree {
 
 	private void printNodes(BinaryNode node) {
 		if (node != null) {
-			printNodes(node.left);
+			printNodes(node.getLeft());
 
-			System.out.println(node.info);
+			System.out.println(node.getInfo());
 
-			printNodes(node.right);
+			printNodes(node.getRight());
 		}
 	}
 
