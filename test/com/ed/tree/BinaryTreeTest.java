@@ -8,15 +8,12 @@ public class BinaryTreeTest {
 	public void testBreadthSearch() {
 		BinaryTree tree = getBinaryTree(50);
 
-		tree.printNodes();
-
 		Assert.assertTrue(tree.breadthSearch(50));
 	}
 
+	@Test
 	public void testDepthSearch() {
 		BinaryTree tree = getBinaryTree(50);
-
-		tree.printNodes();
 
 		Assert.assertTrue(tree.depthSearch(50));
 	}
