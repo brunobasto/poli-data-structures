@@ -1,6 +1,7 @@
 package com.ed.tree;
 
 import com.ed.queue.Queue;
+import com.ed.stack.Stack;
 public class BinaryTree {
 
 	public boolean breadthSearch(int x) {
@@ -21,6 +22,31 @@ public class BinaryTree {
 
 				if (next.getRight() != null) {
 					queue.enqueue(next.getRight());
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public boolean depthSearch(int x) {
+		Stack stack = new Stack();
+
+		stack.push(root);
+
+		while (stack.size() > 0) {
+			BinaryNode next = (BinaryNode)stack.pop();
+
+			if (next.getInfo() == x) {
+				return true;
+			}
+			else {
+				if (next.getLeft() != null) {
+					stack.push(next.getLeft());
+				}
+
+				if (next.getRight() != null) {
+					stack.push(next.getRight());
 				}
 			}
 		}

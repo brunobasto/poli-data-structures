@@ -13,6 +13,14 @@ public class BinaryTreeTest {
 		Assert.assertTrue(tree.breadthSearch(50));
 	}
 
+	public void testDepthSearch() {
+		BinaryTree tree = getBinaryTree(50);
+
+		tree.printNodes();
+
+		Assert.assertTrue(tree.depthSearch(50));
+	}
+
 	private BinaryTree getBinaryTree(int mustHave) {
 		BinaryTree tree = new BinaryTree();
 
