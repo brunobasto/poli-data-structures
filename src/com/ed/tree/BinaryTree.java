@@ -3,10 +3,10 @@ package com.ed.tree;
 public class BinaryTree {
 
 	public void insert(int x) {
-		BinaryNode novo = new BinaryNode(x);
+		BinaryNode node = new BinaryNode(x);
 
 		if (root == null) {
-			root = novo;
+			root = node;
 		}
 		else {
 			BinaryNode aux = root;
@@ -17,7 +17,7 @@ public class BinaryTree {
 				}
 				else if (x < aux.info) {
 					if (aux.left == null) {
-						aux.left = novo;
+						aux.left = node;
 
 						break;
 					}
@@ -27,7 +27,8 @@ public class BinaryTree {
 				}
 				else {
 					if (aux.right == null) {
-						aux.right = novo;
+						aux.right = node;
+
 						break;
 					}
 					else {
