@@ -1,6 +1,32 @@
 package com.ed.tree;
 
+import com.ed.queue.Queue;
 public class BinaryTree {
+
+	public boolean breadthSearch(int x) {
+		Queue queue = new Queue();
+
+		queue.enqueue(root);
+
+		while (queue.size() > 0) {
+			BinaryNode next = (BinaryNode)queue.dequeue();
+
+			if (next.getInfo() == x) {
+				return true;
+			}
+			else {
+				if (next.getLeft() != null) {
+					queue.enqueue(next.getLeft());
+				}
+
+				if (next.getRight() != null) {
+					queue.enqueue(next.getRight());
+				}
+			}
+		}
+
+		return false;
+	}
 
 	public void insert(int x) {
 		BinaryNode node = new BinaryNode(x);
