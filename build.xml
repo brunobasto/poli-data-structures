@@ -74,7 +74,7 @@
 		<trycatch>
 			<try>
 				<jacoco:coverage destfile="jacoco.coverage">
-					<junit fork="true" printsummary="yes" haltonfailure="yes">
+					<junit fork="true" printsummary="yes" haltonfailure="no">
 						<classpath>
 							<path refid="test.classpath" />
 							<pathelement location="${project.dir}/test-classes" />
@@ -109,8 +109,9 @@
 
 					<check>
 						<rule element="PACKAGE">
-							<limit counter="LINE" value="COVEREDRATIO" minimum="1" />
 							<limit counter="CLASS" value="MISSEDCOUNT" maximum="0" />
+							<limit counter="INSTRUCTION" value="COVEREDRATIO" minimum="1" />
+							<limit counter="METHOD" value="MISSEDCOUNT" minimum="0" />
 						</rule>
 					</check>
 				</jacoco:report>
