@@ -146,6 +146,9 @@ public class LinkedListTest {
 
 		list.remove(1);
 
+		Assert.assertEquals("a", list.get(0));
+		Assert.assertEquals("c", list.get(1));
+
 		Assert.assertEquals(2, list.size());
 	}
 
@@ -164,6 +167,9 @@ public class LinkedListTest {
 		list.add("c");
 
 		list.removeRecursive(1);
+
+		Assert.assertEquals("a", list.get(0));
+		Assert.assertEquals("c", list.get(1));
 
 		Assert.assertEquals(2, list.size());
 	}
