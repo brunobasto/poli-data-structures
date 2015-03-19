@@ -1,4 +1,7 @@
+jacoco.coverage
+
 .settings/
 classes/
+coverage/
 dist/
 test-classes/
