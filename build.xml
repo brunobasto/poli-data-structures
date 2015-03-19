@@ -74,7 +74,7 @@
 		<trycatch>
 			<try>
 				<jacoco:coverage destfile="jacoco.coverage">
-					<junit fork="true" printsummary="yes" haltonfailure="no">
+					<junit fork="true" printsummary="yes" haltonfailure="yes">
 						<classpath>
 							<path refid="test.classpath" />
 							<pathelement location="${project.dir}/test-classes" />
