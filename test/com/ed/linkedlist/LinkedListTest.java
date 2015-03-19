@@ -1,5 +1,7 @@
 package com.ed.linkedlist;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Assert;
 import org.junit.Test;
 public class LinkedListTest {
@@ -81,6 +83,24 @@ public class LinkedListTest {
 		Assert.assertEquals(valueB, list.get(1));
 	}
 
+	@Test(expected = NoSuchElementException.class)
+	public void testGetNotFound() {
+		LinkedList list = new LinkedList();
+
+		String valueA = "a";
+
+		list.add(valueA);
+
+		list.get(2);
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testGetWithEmptyList() {
+		LinkedList list = new LinkedList();
+
+		list.get(0);
+	}
+
 	@Test
 	public void testIndexOf() {
 		LinkedList list = new LinkedList();
@@ -125,9 +145,18 @@ public class LinkedListTest {
 		list.add(valueA);
 		list.add(valueB);
 
+		Assert.assertTrue(list.remove(valueB));
 		Assert.assertTrue(list.remove(valueA));
+		Assert.assertFalse(list.remove(valueA));
 
 		Assert.assertEquals(1, list.size());
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testRemoveFromEmptyList() {
+		LinkedList list = new LinkedList();
+
+		list.remove(0);
 	}
 
 	@Test
@@ -150,6 +179,15 @@ public class LinkedListTest {
 		Assert.assertEquals("c", list.get(1));
 
 		Assert.assertEquals(2, list.size());
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testRemoveOutOfBounds() {
+		LinkedList list = new LinkedList();
+
+		list.add("a");
+
+		list.remove(1);
 	}
 
 	@Test

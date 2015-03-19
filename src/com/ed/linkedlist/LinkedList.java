@@ -66,17 +66,19 @@ public class LinkedList {
 	}
 
 	public int indexOf(Object value) {
+		int index = -1;
+
 		if (!contains(value)) {
-			return -1;
+			return index;
 		}
 
 		Node currentNode = getFirst();
 
-		int index = 0;
+		index = 0;
 
 		do {
 			if ((currentNode != null) && currentNode.getValue().equals(value)) {
-				return index;
+				break;
 			}
 
 			currentNode = currentNode.getNext();
@@ -85,7 +87,7 @@ public class LinkedList {
 		}
 		while (currentNode != null);
 
-		return -1;
+		return index;
 	}
 
 	public Object remove(int index) {
@@ -131,8 +133,10 @@ public class LinkedList {
 	}
 
 	public boolean remove(Object value) {
+		boolean removed = false;
+
 		if (!contains(value)) {
-			return false;
+			return removed;
 		}
 
 		Node currentNode = getFirst();
@@ -143,7 +147,9 @@ public class LinkedList {
 			if (get(currentIndex).equals(value)) {
 				remove(currentIndex);
 
-				return true;
+				removed = true;
+
+				break;
 			}
 
 			currentNode = currentNode.getNext();
@@ -152,7 +158,7 @@ public class LinkedList {
 		}
 		while (currentNode != null);
 
-		return false;
+		return removed;
 	}
 
 	public Object removeRecursive(int index) {
