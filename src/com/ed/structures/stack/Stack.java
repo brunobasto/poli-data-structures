@@ -1,6 +1,6 @@
-package com.ed.stack;
+package com.ed.structures.stack;
 
-import com.ed.linkedlist.LinkedList;
+import com.ed.structures.linkedlist.LinkedList;
 public class Stack {
 
 	public Stack() {

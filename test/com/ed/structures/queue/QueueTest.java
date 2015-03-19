@@ -1,4 +1,4 @@
-package com.ed.queue;
+package com.ed.structures.queue;
 
 import org.junit.Assert;
 import org.junit.Test;

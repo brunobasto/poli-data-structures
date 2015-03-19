@@ -1,4 +1,4 @@
-package com.ed.linkedlist;
+package com.ed.structures.linkedlist;
 
 import java.util.NoSuchElementException;
 
@@ -149,7 +149,7 @@ public class LinkedListTest {
 		Assert.assertTrue(list.remove(valueA));
 		Assert.assertFalse(list.remove(valueA));
 
-		Assert.assertEquals(1, list.size());
+		Assert.assertEquals(0, list.size());
 	}
 
 	@Test(expected = NoSuchElementException.class)

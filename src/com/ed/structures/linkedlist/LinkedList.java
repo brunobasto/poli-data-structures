@@ -1,4 +1,4 @@
-package com.ed.linkedlist;
+package com.ed.structures.linkedlist;
 
 import java.util.NoSuchElementException;
 public class LinkedList {

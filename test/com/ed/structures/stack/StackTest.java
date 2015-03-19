@@ -1,4 +1,4 @@
-package com.ed.stack;
+package com.ed.structures.stack;
 
 import org.junit.Assert;
 import org.junit.Test;

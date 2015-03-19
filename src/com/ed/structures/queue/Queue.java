@@ -1,6 +1,6 @@
-package com.ed.queue;
+package com.ed.structures.queue;
 
-import com.ed.linkedlist.LinkedList;
+import com.ed.structures.linkedlist.LinkedList;
 public class Queue {
 
 	public Queue() {
